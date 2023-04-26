@@ -13,6 +13,7 @@ import {
 	Pagination,
 	PaginationItem,
 	Stack,
+	Typography,
 } from '@mui/material'
 import {
 	DataGrid,
@@ -270,7 +271,11 @@ function App() {
 						</g>
 					</g>
 				</svg>
-				<Box sx={{ m: 1 }}>No Data Available</Box>
+				<Box sx={{ m: 1 }}>
+					<Typography variant='h6' gutterBottom component='div'>
+						No Data Available. Fill and Submit the above form.
+					</Typography>
+				</Box>
 			</StyledGridOverlay>
 		)
 	}
@@ -352,63 +357,71 @@ function App() {
 						</Button>
 					</Grid>
 
-					<Grid item xs={12}>
-						<Stack spacing={1}>
-							<FormControl variant='outlined'>
-								<InputLabel htmlFor='search-name'>Search Name</InputLabel>
-								<OutlinedInput
-									id='search-name'
-									value={values.searchName}
-									fullWidth
-									placeholder='Search Name'
-									label='Search Name'
-									onChange={(e) => handleChange(e)}
-									endAdornment={
-										<InputAdornment position='end'>
-											<IconButton
-												aria-label='search icon'
-												edge='end'
-												size='small'>
-												<SearchTwoTone />
-											</IconButton>
-										</InputAdornment>
-									}
-								/>
-							</FormControl>
-						</Stack>
-					</Grid>
+					{data.length > 0 ? (
+						<>
+							<Grid item xs={12}>
+								<Stack spacing={1}>
+									<FormControl variant='outlined'>
+										<InputLabel htmlFor='search-name'>Search Name</InputLabel>
+										<OutlinedInput
+											id='search-name'
+											value={values.searchName}
+											fullWidth
+											placeholder='Search Name'
+											label='Search Name'
+											onChange={(e) => handleChange(e)}
+											endAdornment={
+												<InputAdornment position='end'>
+													<IconButton
+														aria-label='search icon'
+														edge='end'
+														size='small'>
+														<SearchTwoTone />
+													</IconButton>
+												</InputAdornment>
+											}
+										/>
+									</FormControl>
+								</Stack>
+							</Grid>
 
-					<Grid item xs={12}>
-						<DataGrid
-							sx={{
-								'& .MuiDataGrid-cell': {
-									fontFamily: 'Montserrat, sans-serif',
-								},
-								'& .MuiDataGrid-columnHeaderTitle': {
-									textOverflow: 'clip',
-									whiteSpace: 'break-spaces',
-									height: 'auto',
-									lineHeight: 1,
-									fontFamily: 'Montserrat, sans-serif',
-									fontWeight: '700',
-								},
-							}}
-							disableColumnMenu={true}
-							disableSelectionOnClick={true}
-							rows={data}
-							columns={columns}
-							autoHeight={true}
-							pageSize={10}
-							isRowSelectable={() => {
-								return false
-							}}
-							components={{
-								Pagination: CustomPagination,
-								NoRowsOverlay: CustomNoRowsOverlay,
-							}}
-							getRowId={(row) => row.contactNumber}
-						/>
-					</Grid>
+							<Grid item xs={12}>
+								<DataGrid
+									sx={{
+										'& .MuiDataGrid-cell': {
+											fontFamily: 'Montserrat, sans-serif',
+										},
+										'& .MuiDataGrid-columnHeaderTitle': {
+											textOverflow: 'clip',
+											whiteSpace: 'break-spaces',
+											height: 'auto',
+											lineHeight: 1,
+											fontFamily: 'Montserrat, sans-serif',
+											fontWeight: '700',
+										},
+									}}
+									disableColumnMenu={true}
+									disableSelectionOnClick={true}
+									rows={data}
+									columns={columns}
+									autoHeight={true}
+									pageSize={10}
+									isRowSelectable={() => {
+										return false
+									}}
+									components={{
+										Pagination: CustomPagination,
+										NoRowsOverlay: CustomNoRowsOverlay,
+									}}
+									getRowId={(row) => row.contactNumber}
+								/>
+							</Grid>
+						</>
+					) : (
+						<Grid item xs={12}>
+							<CustomNoRowsOverlay />
+						</Grid>
+					)}
 				</Grid>
 			</Box>
 		</Box>
