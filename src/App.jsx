@@ -13,6 +13,7 @@ import {
 	Pagination,
 	PaginationItem,
 	Stack,
+	TextField,
 	Typography,
 } from '@mui/material'
 import {
@@ -279,13 +280,19 @@ function App() {
 		)
 	}
 
+	const inputStyle = {
+		'& .MuiFormLabel-asterisk': {
+			color: 'red',
+		},
+	}
+
 	return (
 		<Box className='header'>
 			<Box sx={{ padding: '10px', width: '75%' }}>
 				<Grid container spacing={2}>
 					<Grid item sx={{ display: 'flex', justifyContent: 'space-evenly' }} xs={12}>
 						<Stack spacing={1} sx={{ width: '50%', paddingRight: '20px' }}>
-							<FormControl variant='outlined'>
+							<FormControl variant='outlined' required sx={inputStyle}>
 								<InputLabel htmlFor='first-name'>First Name</InputLabel>
 								<OutlinedInput
 									id='first-name'
@@ -302,7 +309,7 @@ function App() {
 							</FormHelperText>
 						</Stack>
 						<Stack spacing={1} sx={{ width: '50%' }}>
-							<FormControl variant='outlined'>
+							<FormControl variant='outlined' required sx={inputStyle}>
 								<InputLabel htmlFor='last-name'>Last Name</InputLabel>
 								<OutlinedInput
 									id='last-name'
@@ -321,7 +328,7 @@ function App() {
 					</Grid>
 					<Grid item xs={12}>
 						<Stack spacing={1}>
-							<FormControl variant='outlined'>
+							<FormControl variant='outlined' required sx={inputStyle}>
 								<InputLabel htmlFor='contact-number'>Contact Number</InputLabel>
 								<OutlinedInput
 									id='contact-number'
