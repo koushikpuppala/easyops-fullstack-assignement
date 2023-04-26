@@ -41,13 +41,10 @@ function App() {
 			field: 'id',
 			headerName: 'SI.No',
 			width: 100,
-			// renderCell: (params) => {
-			// 	return <strong>{params.api.getRowIndex(params.row.contactNumber)}</strong>
-			// },
 			sortable: false,
 		},
 		{ field: 'name', headerName: 'Name', width: 200 },
-		{ field: 'contactNumber', headerName: 'Contact Number', width: 200 },
+		{ field: 'contactNumber', headerName: 'Contact Number', width: 200, sortable: false },
 		{
 			field: 'action',
 			headerName: 'Action',
@@ -64,6 +61,7 @@ function App() {
 					</>
 				)
 			},
+			sortable: false,
 		},
 	]
 
