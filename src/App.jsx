@@ -130,13 +130,14 @@ function App() {
 				})
 				break
 			case 'contact-number':
-				setValues({
-					...values,
-					contactNumber: value,
-					errorContactNumber: data.map((item) => item.contactNumber).includes(value)
-						? 'Contact Number already exist'
-						: '',
-				})
+				!isNaN(Number(value)) &&
+					setValues({
+						...values,
+						contactNumber: value,
+						errorContactNumber: data.map((item) => item.contactNumber).includes(value)
+							? 'Contact Number already exist'
+							: '',
+					})
 				break
 			case 'search-name':
 				setValues({
