@@ -190,7 +190,39 @@ function App() {
 		} else {
 			setData([])
 		}
-	}, [])
+
+		data.length > 0
+			? data.forEach((item) => {
+					if (item.name === `${values.firstName} ${values.lastName}`) {
+						setValues({
+							...values,
+							errorName: 'Name already exist',
+						})
+					} else {
+						setValues({
+							...values,
+							errorName: '',
+						})
+					}
+
+					if (item.contactNumber === values.contactNumber) {
+						setValues({
+							...values,
+							errorContactNumber: 'Contact Number already exist',
+						})
+					} else {
+						setValues({
+							...values,
+							errorContactNumber: '',
+						})
+					}
+			  })
+			: setValues({
+					...values,
+					errorName: '',
+					errorContactNumber: '',
+			  })
+	}, [data])
 
 	const CustomPagination = () => {
 		const apiRef = useGridApiContext()
@@ -355,7 +387,8 @@ function App() {
 								values.firstName === '' ||
 								values.lastName === '' ||
 								values.contactNumber === '' ||
-								values.errorContactNumber !== ''
+								values.errorContactNumber !== '' ||
+								values.errorName !== ''
 									? true
 									: false
 							}>

@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# Easyops Full Stack Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. All inputs are mandatory
 
-## Available Scripts
+The Save button will be disabled until all inputs are filled correctly without any errors.
 
-In the project directory, you can run:
+## 2. On submit populate the data in the table
 
-### `yarn start`
+On clicking the Save button, the data will be populated in the table below the form. Until there is no Data `No Data Available` text will be visible. Once we get at least one row in the table, the search box will be visible. and table with the requested formate will be visible.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 3. Person's name and contact number should be unique, duplicate are not allowed.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If the user tries to enter the same name or contact number, an error message will be shown below the input field.
 
-### `yarn test`
+## 4. A little bit of styling is required
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The form and table is responsive and look good.
 
-### `yarn build`
+## 5. Provide search by name
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The search box will be visible once we get at least one row in the table. The search box will search the name in the table and show the result accordingly. It will auto search data once we start entering the name in the search box.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 6. Provide delete functionality with alert
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The delete button will be visible once we get at least one row in the table. On clicking the delete button, an alert will be shown to the user to confirm the delete action. If the user clicks on the cancel button, the delete action will be canceled. If the user clicks on the ok button, the delete action will be performed and the row will be deleted from the table.
 
-### `yarn eject`
+## 7. Implement sort by name (When someone clicks on name column)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The sort button will be visible once we get at least one row in the table and when we hover on the name column header. On clicking the sort button, the data will be sorted in ascending order. If the user clicks on the sort button again, the data will be sorted in descending order. If user clicks again it will go to starting point.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Note: One extra point will be given if the code supports data persistence (i.e. data should not be lost on page refresh)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The data will be stored in the local storage of the browser. So the data will not be lost on page refresh.
