@@ -141,6 +141,7 @@ function App() {
 					})
 				break
 			case 'search-name':
+				console.log(value)
 				setValues({
 					...values,
 					searchName: value,
@@ -186,7 +187,15 @@ function App() {
 
 	useEffect(() => {
 		if (localStorage.getItem('data')) {
-			setData(JSON.parse(localStorage.getItem('data')))
+			if (values.searchName === '') {
+				setData(JSON.parse(localStorage.getItem('data')))
+			} else {
+				setData(
+					data.filter((item) => {
+						return item.name.toLowerCase().includes(values.searchName.toLowerCase())
+					})
+				)
+			}
 		} else {
 			setData([])
 		}
